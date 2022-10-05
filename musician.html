@@ -25,26 +25,45 @@
 
 <script>
 
-    let correct=0;
-    let wrong=0;
+let correct=0;
+let wrong=0;
+let count=0;
 
-    function  checkGuess(){
-        console.log("Getting form values")
-        name1 = document.getElementById("form1_age").value
-        name2 = document.getElementById("form1_nick").value
-        confirmed = confirm("Are these the values? "+name1+" and "+name2)
+function checkGuess(){
+    console.log("Getting form values")
 
-        out = document.getElementById("result")
-        if(name1==name2){
-            correct=correct+1;
-            alert("You got it right");
-        } else {
-            wrong=wrong+1;
-            alert("“Wrong Musician");
-        }
-        out.innerHTML="correct "+correct+"  wrong "+wrong
+    name1 = document.getElementById("form1_age").value
+
+    name2 = document.getElementById("form1_nick").value
+
+    confirmed = confirm("Are these the values? "+name1+" and "+name2)          
+
+    out = document.getElementById("result")
+
+    if(name1==name2){
+        count=0
+
+        correct=correct+1;
+
+        alert("You got it right");
+
+    }else {
+        if(count<3){
+            wrong=wrong+1
+            count=count+1
+            alert("Access denied")
+        }  
+        else{
+            alert("Sorry, game over.")
+
+        }  
+        
+                
 
     }
+    out.innerHTML="correct "+correct+"  wrong "+wrong
+}
+
 </script>
 
     <div class="container">
